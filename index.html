@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <!--bootstrap cdn: http://www.bootstrapcdn.com/-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="app.css" rel="stylesheet">
+    <link href="components/navigation/nav.css" rel="stylesheet">
+
+</head>
+<body >
+    <!-- application -->
+    <div class="container" ng-controller="AppCtrl">
+        <!--navigation bar-->
+        <div nav></div>
+
+        <!--view provide by route-->
+        <div ui-view></div>
+    </div>
+
+
+    <!--jqery cdn: https://developers.google.com/speed/libraries/devguide#jquery-->
+    <!--used by: bootstrap -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+    <!-- bootstrap cdn: http://www.bootstrapcdn.com/ -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- lodash cdn:  http://cdnjs.com/libraries/lodash.js/ -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+
+    <!--angular cdn: https://developers.google.com/speed/libraries/ -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular-resource.js"></script>
+
+    <!--ui-router cdn: http://cdnjs.com/libraries/angular-ui-router/ -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.js"></script>
+
+    <!--moment cdn: http://cdnjs.com/libraries/angular-moment-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.js"></script>
+
+    <!--application js-->
+    <script src="app.js"></script>
+    <script src="app-controller.js"></script>
+    <script src="components/home/HomeCtrl.js"></script>
+    <script src="components/test/TestCtrl.js"></script>
+    <script src="components/navigation/nav-directive.js"></script>
+    <script src="components/navigation/NavCtrl.js"></script>
+
+
+</body>
+</html>
