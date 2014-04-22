@@ -1,0 +1,36 @@
+<!--<input type="text" data-keyboard-poster data-post-function="searchUsers" name="first_name" placeholder="" list="_users" style='margin-bottom: 100px'>
+<datalist id="_users">
+    <select style="display: none;" id="_select" name="_select" ng-model='selectedUser' ng-options='u.name for u in users'></select>
+</datalist>-->
+<div class="flex-containter" ng-controller="UserSearchCtrl">
+    <div class="flex-box-20">
+        User:
+        <input type="text"
+               ng-model="userText"
+               typeahead="userText as u.Name for u in GetUsers($viewValue)"
+               typeahead-min-length="0"
+               typeahead-template-url="components/user-search/user-search-typeahead.html"
+               typeahead-editable="false"
+               typeahead-loading="loadingUsers"
+               typeahead-on-select="SelectUser($item, $model, $label)"
+               class="form-control">
+        </input>
+        <span ng-show="loadingUsers"> Loading</span>
+    </div>
+    <div class="flex-box-20">
+        First Name:
+        <span ng-bind="user.FirstName "></span>
+    </div>
+    <div class="flex-box-20">
+        Last Name:
+        <span ng-bind="user.LastName "></span>
+    </div>
+    <div class="flex-box-20">
+        Last 4 SSN:
+        <span ng-bind="user.SSN "></span>
+    </div>
+    <div class="flex-box-20">
+        Last 4 ISO:
+        <span ng-bind="user.ISO "></span>
+    </div>
+</div>

@@ -3,3 +3,56 @@ body {
     padding-bottom: 20px;
 }
 
+
+.flex-containter {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.flex-box-20 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 20%;
+    margin-bottom: 20px;
+}
+.flex-box-33 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 33.333333%;
+    margin-bottom: 20px;
+}
+.flex-box-50 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 50%;
+    margin-bottom: 20px;
+}
+.flex-box-66 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 66.6666666%;
+    margin-bottom: 20px;
+}
+.flex-box-80 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 80%;
+    margin-bottom: 20px;
+}
+.flex-box-100 {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.float-right {
+    float: right
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+}

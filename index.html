@@ -2,9 +2,13 @@
 <html ng-app="app">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>NKU Account Maintenance</title>
     <!--bootstrap cdn: http://www.bootstrapcdn.com/-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--angular-ui cdn: http://cdnjs.com/libraries/angular-ui-->
+    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.css" rel="stylesheet">-->
 
     <link href="app.css" rel="stylesheet">
     <link href="components/navigation/nav.css" rel="stylesheet">
@@ -13,11 +17,23 @@
 <body >
     <!-- application -->
     <div class="container" ng-controller="AppCtrl">
-        <!--navigation bar-->
+
         <div nav></div>
 
-        <!--view provide by route-->
-        <div ui-view></div>
+        <div class="flex-containter">
+            <div class="flex-box-100" ng-include="'components/user-search/user-search.html'">
+            </div>
+            <div class="flex-box-20">
+                <ul>
+                    <li><a data-ui-sref="ad">Active Directory</a></li>
+                    <li><a data-ui-sref="email">Email</a></li>
+                    <li><a data-ui-sref="pharos">Pay for Print</a></li>
+                </ul>
+            </div>
+            <div class="flex-box-80" ui-view>
+            </div>
+        </div>
+
     </div>
 
 
@@ -38,17 +54,32 @@
     <!--ui-router cdn: http://cdnjs.com/libraries/angular-ui-router/ -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.js"></script>
 
+    <!--ui-bootstrap cdn: http://cdnjs.com/libraries/angular-ui-bootstrap/ -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap.js"></script>
+
+    <!-- ng-grid cdn: http://cdnjs.com/libraries/ng-grid/-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.8/ng-grid.js"></script>
+
+    <!--angular-ui cdn: http://cdnjs.com/libraries/angular-ui-->
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>-->
     <!--moment cdn: http://cdnjs.com/libraries/angular-moment-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.js"></script>
 
     <!--application js-->
     <script src="app.js"></script>
     <script src="app-controller.js"></script>
-    <script src="components/home/HomeCtrl.js"></script>
-    <script src="components/test/TestCtrl.js"></script>
+    <script src="components/ad/ad-controller.js"></script>
+    <script src="components/ad/ad-user-service.js"></script>
+    <script src="components/email/email-controller.js"></script>
+    <script src="components/email/exchange-user-service.js"></script>
+    <script src="components/home/home-controller.js"></script>
+    <script src="components/navigation/nav-controller.js"></script>
     <script src="components/navigation/nav-directive.js"></script>
-    <script src="components/navigation/NavCtrl.js"></script>
-
+    <script src="components/pharos/pharos-controller.js"></script>
+    <script src="components/pharos/pharos-user-service.js"></script>
+    <script src="components/user-search/user-highlight-filter.js"></script>
+    <script src="components/user-search/user-search-controller.js"></script>
+    <script src="components/user-search/user-service.js"></script>
 
 </body>
 </html>
