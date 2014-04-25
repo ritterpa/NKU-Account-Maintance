@@ -8,9 +8,11 @@
     <orderEntry type="library" name="angular-moment" level="application" />
     <orderEntry type="library" name="angular-resource" level="application" />
     <orderEntry type="library" name="angular-ui-router" level="application" />
-    <orderEntry type="library" name="angular-ui" level="application" />
     <orderEntry type="library" name="ng-grid" level="application" />
     <orderEntry type="library" name="ui-bootstrap" level="application" />
+    <orderEntry type="library" name="moment" level="application" />
+    <orderEntry type="library" name="ng-grid-flexible-height" level="application" />
+    <orderEntry type="library" name="ui-bootstrap-tpls" level="application" />
   </component>
 </module>
 

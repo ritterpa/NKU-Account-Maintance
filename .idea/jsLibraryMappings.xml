@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/index.html" libraries="{angular-ui, ng-grid, ui-bootstrap}" />
-    <file url="PROJECT" libraries="{angular, angular-moment, angular-resource, angular-ui-router}" />
+    <file url="file://$PROJECT_DIR$/index.html" libraries="{moment, ng-grid, ng-grid-flexible-height, ui-bootstrap, ui-bootstrap-tpls}" />
+    <file url="PROJECT" libraries="{angular, angular-moment, angular-resource, angular-ui-router, moment, ui-bootstrap, ui-bootstrap-tpls}" />
   </component>
 </project>
 

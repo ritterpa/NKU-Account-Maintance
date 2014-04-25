@@ -1,20 +1,20 @@
 'use strict';
 
-var app = angular.module('app', [ 'ngResource', 'ui.router', 'ui.bootstrap']);
+var app = angular.module('app', [ 'ngResource', 'ui.router', 'ui.bootstrap', 'angularMoment', 'ngGrid']);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    $locationProvider.html5Mode(false);
+    $locationProvider.html5Mode(true);
 
     // For any unmatched url, redirect to home state
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/ad");
 
     // setup the states
     $stateProvider
-        .state('home', {
-            url: "/",
-            templateUrl: "components/home/home.html",
-            controller: 'HomeCtrl'
-        })
+//        .state('home', {
+//            url: "/",
+//            templateUrl: "components/home/home.html",
+//            controller: 'HomeCtrl'
+//        })
         .state('ad', {
             url: "/ad",
             templateUrl: "components/ad/ad.html",
@@ -40,7 +40,6 @@ app.run(function ($rootScope, $location) {
     $rootScope.$on('$stateChangeStart',  function (event, toState, toParams, fromState, fromParams) {
         //save location.search so we can add it back after transition is done
         if( $location.search() != null) {
-            console.log($location.search());
             locationSearch = $location.search();
         }
     });
@@ -52,7 +51,9 @@ app.run(function ($rootScope, $location) {
     });
 
     //Path to webapi, all resources will use this
-    $rootScope.api =  "http://localhost:42166/api/";
+    //$rootScope.api =  "http://localhost:42166/api/";
+    //$rootScope.api =  "http://account.nku.edu/api/";
+    $rootScope.api =  "/api/";
 });
 
 app.filter('unsafe', function ($sce) {
@@ -60,3 +61,35 @@ app.filter('unsafe', function ($sce) {
         return $sce.trustAsHtml(val);
     };
 });
+
+app.filter('ago',  function () {
+
+    return function (value) {
+
+
+        if (!isNaN(parseFloat(value)) && isFinite(value)) {
+            // Milliseconds since the epoch
+            value = new Date(parseInt(value, 10));
+        }
+
+
+        return moment(value).fromNow();
+    };
+});
+
+/**
+ * Created by towlesj on 4/24/2014.
+ */
+app.directive("dateTime", function ($compile, $modal) {
+    return {
+        restrict: "EA",
+        scope: {
+            datetime: "=dateTime"
+        },
+        replace: 'true',
+        template: '<div ng-show="datetime"> ' +
+            '{{ datetime | amDateFormat:"M/DD/YYYY h:mm:ss a"  }} - {{ datetime | ago }}' +
+            '</div>'
+    };
+})
+

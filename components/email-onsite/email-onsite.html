@@ -1,0 +1,67 @@
+<div ng-show="status == 'none'">
+    <h3>No email account found.</h3>
+</div>
+<div ng-show="status == 'loading'">
+    <h3>Loading</h3>
+</div>
+<div ng-show="status == 'loaded'">
+    <h3>Email</h3>
+    <dl class="dl-horizontal">
+        <dt>Display Name</dt>
+        <dd ng-bind="user.DisplayName"></dd>
+        <dt>Database</dt>
+        <dd ng-bind="user.Database"></dd>
+        <dt>Server Name</dt>
+        <dd ng-bind="user.ServerName"></dd>
+        <dt>Last Logon Time</dt>
+        <dd>{{ user.LastLogonTime | amDateFormat:"M/DD/YYYY h:mm:ss a" }} - {{ user.LastLogonTime | ago }}</dd>
+        <dt>Primary Smtp Address</dt>
+        <dd ng-bind="user.PrimarySmtpAddress"></dd>
+        <dt>Email Addresses</dt>
+        <dd>
+            <ul ng-repeat="address in user.EmailAddresses">
+                <li ng-bind="address"></li>
+            </ul>
+        </dd>
+    </dl>
+
+    <h3>Quota</h3>
+    <dl class="dl-horizontal">
+        <dt ng-show="hasQuota">Status</dt>
+        <dd ng-show="hasQuota">
+            <progressbar class="progress-striped active" value="dynamic" max="1" type="{{type}}">{{message}}</progressbar>
+        </dd>
+        <dt>Storage Limit Status</dt>
+        <dd ng-bind="user.StorageLimitStatus"></dd>
+        <dt>Total Item Size</dt>
+        <dd ng-bind="user.TotalItemSize"></dd>
+        <dt>Issue Warning</dt>
+        <dd ng-bind="user.DatabaseIssueWarningQuota"></dd>
+        <dt>Prohibit Send</dt>
+        <dd ng-bind="user.DatabaseProhibitSendQuota"></dd>
+        <dt>Prohibit Send Receive</dt>
+        <dd ng-bind="user.DatabaseProhibitSendReceiveQuota"></dd>
+    </dl>
+
+
+    <h3>Forwarding</h3>
+    <dl class="dl-horizontal">
+        <dt>Forwarding Address</dt>
+        <dd ng-bind="user.ForwardingAddress"></dd>
+        <dt>Deliver and Forward</dt>
+        <dd ng-bind="user.DeliverToMailboxAndForward"></dd>
+    </dl>
+
+    <h3>Other</h3>
+    <dl class="dl-horizontal">
+        <dt>CustomAttribute9</dt>
+        <dd ng-bind="user.CustomAttribute9"></dd>
+        <dt>LegacyExchangeDN</dt>
+        <dd ng-bind="user.LegacyExchangeDN"></dd>
+        <dt>Send On Behalf</dt>
+        <dd ng-bind="user.GrantSendOnBehalfTo"></dd>
+    </dl>
+</div>
+<!--<pre>-->
+    <!--{{ user | json }}-->
+<!--</pre>-->

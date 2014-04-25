@@ -1,6 +1,6 @@
 app.factory('ADUser', function ($resource, $rootScope) {
     var url = $rootScope.api + "ad/user";
-    var ADUser = $resource(
+    return $resource(
         url,
         null,//{ScopeId: "@ScopeId"},
         {
@@ -10,9 +10,11 @@ app.factory('ADUser', function ($resource, $rootScope) {
             'unlock': {
                 method: 'GET',
                 url: url + '/unlock'
+            },
+            'password': {
+                method: 'GET',
+                url: url + '/password'
             }
         }
     );
-
-    return ADUser;
 });

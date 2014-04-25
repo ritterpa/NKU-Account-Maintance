@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <title>NKU Account Maintenance</title>
     <!--bootstrap cdn: http://www.bootstrapcdn.com/-->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
 
     <!--angular-ui cdn: http://cdnjs.com/libraries/angular-ui-->
     <!--<link href="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.css" rel="stylesheet">-->
+
+    <!--ng-grid css-->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.css" rel="stylesheet">
 
     <link href="app.css" rel="stylesheet">
     <link href="components/navigation/nav.css" rel="stylesheet">
 
 </head>
-<body >
+<body>
     <!-- application -->
     <div class="container" ng-controller="AppCtrl">
 
         <div nav></div>
 
         <div class="flex-containter">
-            <div class="flex-box-100" ng-include="'components/user-search/user-search.html'">
-            </div>
             <div class="flex-box-20">
                 <ul>
-                    <li><a data-ui-sref="ad">Active Directory</a></li>
-                    <li><a data-ui-sref="email">Email</a></li>
-                    <li><a data-ui-sref="pharos">Pay for Print</a></li>
+                    <li><a ui-sref="ad">Active Directory</a></li>
+                    <li><a ui-sref="email">Email</a></li>
+                    <li><a ui-sref="pharos">Pay for Print</a></li>
                 </ul>
             </div>
             <div class="flex-box-80" ui-view>
@@ -42,7 +42,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
     <!-- bootstrap cdn: http://www.bootstrapcdn.com/ -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
 
     <!-- lodash cdn:  http://cdnjs.com/libraries/lodash.js/ -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
@@ -56,13 +56,17 @@
 
     <!--ui-bootstrap cdn: http://cdnjs.com/libraries/angular-ui-bootstrap/ -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
     <!-- ng-grid cdn: http://cdnjs.com/libraries/ng-grid/-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.8/ng-grid.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid-flexible-height.js"></script>
 
     <!--angular-ui cdn: http://cdnjs.com/libraries/angular-ui-->
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>-->
-    <!--moment cdn: http://cdnjs.com/libraries/angular-moment-->
+
+    <!--moment cdn: http://cdnjs.com/libraries/moment.js/ -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.js"></script>
+    <!--angular-moment cdn: http://cdnjs.com/libraries/angular-moment-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.6.2/angular-moment.js"></script>
 
     <!--application js-->
@@ -70,11 +74,16 @@
     <script src="app-controller.js"></script>
     <script src="components/ad/ad-controller.js"></script>
     <script src="components/ad/ad-user-service.js"></script>
+    <script src="components/ad/ad-group-directive.js"></script>
     <script src="components/email/email-controller.js"></script>
+    <script src="components/email-offsite/email-offsite-controller.js"></script>
+    <script src="components/email-onsite/email-onsite-controller.js"></script>
     <script src="components/email/exchange-user-service.js"></script>
     <script src="components/home/home-controller.js"></script>
     <script src="components/navigation/nav-controller.js"></script>
     <script src="components/navigation/nav-directive.js"></script>
+    <script src="components/password-change/password-change-controller.js"></script>
+    <script src="components/password-change/password-change-directive.js"></script>
     <script src="components/pharos/pharos-controller.js"></script>
     <script src="components/pharos/pharos-user-service.js"></script>
     <script src="components/user-search/user-highlight-filter.js"></script>

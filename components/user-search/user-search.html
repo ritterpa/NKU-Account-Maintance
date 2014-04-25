@@ -1,36 +1,65 @@
-<!--<input type="text" data-keyboard-poster data-post-function="searchUsers" name="first_name" placeholder="" list="_users" style='margin-bottom: 100px'>
-<datalist id="_users">
-    <select style="display: none;" id="_select" name="_select" ng-model='selectedUser' ng-options='u.name for u in users'></select>
-</datalist>-->
-<div class="flex-containter" ng-controller="UserSearchCtrl">
-    <div class="flex-box-20">
-        User:
-        <input type="text"
-               ng-model="userText"
-               typeahead="userText as u.Name for u in GetUsers($viewValue)"
-               typeahead-min-length="0"
-               typeahead-template-url="components/user-search/user-search-typeahead.html"
-               typeahead-editable="false"
-               typeahead-loading="loadingUsers"
-               typeahead-on-select="SelectUser($item, $model, $label)"
-               class="form-control">
-        </input>
-        <span ng-show="loadingUsers"> Loading</span>
-    </div>
-    <div class="flex-box-20">
-        First Name:
-        <span ng-bind="user.FirstName "></span>
-    </div>
-    <div class="flex-box-20">
-        Last Name:
-        <span ng-bind="user.LastName "></span>
-    </div>
-    <div class="flex-box-20">
-        Last 4 SSN:
-        <span ng-bind="user.SSN "></span>
-    </div>
-    <div class="flex-box-20">
-        Last 4 ISO:
-        <span ng-bind="user.ISO "></span>
-    </div>
+<div ng-controller="UserSearchCtrl">
+    <ul class="nav navbar-nav"  >
+        <li>
+            <p class="navbar-text">
+                First Name:<br />
+                <span ng-bind="user.FirstName" class="strong"></span>
+            </p>
+        </li>
+        <li>
+            <p class="navbar-text">
+                Last Name:<br />
+                <span ng-bind="user.LastName" class="strong"></span>
+            </p>
+        </li>
+
+        <li>
+            <p class="navbar-text">
+                Last 4 SSN:<br />
+                <span ng-bind="user.SSN" class="strong"></span>
+            </p>
+        </li>
+        <li>
+            <p class="navbar-text">
+                Last 4 ISO:<br />
+                <span ng-bind="user.ISO" class="strong"></span>
+            </p>
+        </li>
+        <li>
+            <p class="navbar-text">
+                Active:<br />
+                <span ng-bind="user.Active" class="strong" ng-class="{error: user.Active == 'No'}"></span>
+            </p>
+        </li>
+        <li>
+            <p class="navbar-text">
+                Type:<br />
+                <span ng-bind="user.Type" class="strong"></span>
+            </p>
+        </li>
+        <li ng-if="user.Photo" >
+            <p class="navbar-text" >
+                <img style="max-height: 100px; max-width: 100px" ng-src="{{ user.Photo }}" />
+            </p>
+        </li>
+        <li>
+            <p class="navbar-text">
+                User:<br />
+                <input style="margin-top: -5px" type="text"
+                       ng-model="userText"
+                       typeahead="userText as u.Name for u in GetUsers($viewValue)"
+                       typeahead-min-length="0"
+                       typeahead-template-url="components/user-search/user-search-typeahead.html"
+                       typeahead-editable="false"
+                       typeahead-loading="loadingUsers"
+                       typeahead-on-select="SelectUser($item, $model, $label)"
+                       class="form-control">
+                </input>
+                <!--<span ng-show="loadingUsers"> Loading</span>-->
+            </p>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+    </ul>
 </div>

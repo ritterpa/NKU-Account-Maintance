@@ -1,8 +1,11 @@
 body {
     padding-top: 20px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 
+.strong {
+    font-weight: bold;
+}
 
 .flex-containter {
     display: flex;
@@ -56,3 +59,28 @@ body {
     background-color: #eee;
     opacity: 1;
 }
+
+/*fixes a problem where empty dd cause dd's below it to be shifted up'*/
+.dl-horizontal > dd:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+/*used to debug spaceing*/
+.debug {
+    outline: red solid 1px;
+}
+
+.gridStyle {
+    margin-top: 50px;
+    position:relative;
+    border: 1px solid rgb(212,212,212);
+    height: 300px;
+}
+
+.error {
+    color: red;
+}
+
+.ul-tight { margin: 0; }

@@ -1,3 +1,33 @@
-<h3>Pharos</h3>
+<div ng-show="status == 'none'">
+    <h3>No pharos account found.</h3>
+</div>
+<div ng-show="status == 'loading'">
+    <h3>Loading</h3>
+</div>
+<div ng-show="status == 'loaded'">
+    <h3>Pharos</h3>
+    <dl class="dl-horizontal">
+        <dt>User</dt>
+        <dd ng-bind="user.User"></dd>
+        <dt>Free Prints</dt>
+        <dd ng-bind="user.FreePrints"></dd>
+        <dt>All Card Charges</dt>
+        <dd ng-bind="user.AllCardCharges"></dd>
+        <dt>Status</dt>
+        <dd ng-bind="user.Status"></dd>
+        <dt>Billing Options</dt>
+        <dd ng-bind="user.BillingOptions"></dd>
+    </dl>
+    <tabset>
+        <tab heading="Alerts">
+            <div class="gridStyle" ng-grid="gridOptionsAlerts">
+            </div>
+        </tab>
+        <tab heading="Transactions">
+            <div class="gridStyle" ng-grid="gridOptionsTrans">
+            </div>
+        </tab>
+    </tabset>
+</div>
 
-<pre>{{ user | json }}</pre>
+<!--<pre>{{ user | json }}</pre>-->

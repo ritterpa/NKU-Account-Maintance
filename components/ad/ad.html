@@ -1,7 +1,91 @@
-<h3>Active Directory</h3>
-<pre>   
-    {{ user | json }}
-</pre>
-<a  class="btn-primary" ng-click="Unlock()">Unlock</a>
+<div ng-show="status == 'none'">
+    <h3>No ad account found.</h3>
+</div>
+<div ng-show="status == 'loading'">
+    <h3>Loading</h3>
+</div>
+<div ng-show="status == 'loaded'">
+    <h3>Active Directory</h3>
+    <dl class="dl-horizontal">
+        <dt>Account Name</dt>
+        <dd ng-bind="user.samAccountName"></dd>
+        <dt>Display Name</dt>
+        <dd ng-bind="user.displayName"></dd>
+        <dt>First Name</dt>
+        <dd ng-bind="user.givenName"></dd>
+        <dt>Last Name</dt>
+        <dd ng-bind="user.sn"></dd>
+        <dt>Initials</dt>
+        <dd ng-bind="user.initials"></dd>
+        <dt>Description</dt>
+        <dd ng-bind="user.description"></dd>
+    </dl>
+    <h3>Contact Info</h3>
+    <dl class="dl-horizontal">
+        <dt>Office</dt>
+        <dd ng-bind="user.physicalDeliveryOfficeName"></dd>
+        <dt>Phone</dt>
+        <dd ng-bind="user.telephoneNumber"></dd>
+        <dt>Home Phone</dt>
+        <dd ng-bind="user.homePhone"></dd>
+        <dt>Email</dt>
+        <dd ng-bind="user.mail"></dd>
+        <dt>Home Page</dt>
+        <dd> <a ng-href="{{user.wWWHomePage}}" ng-bind="user.wWWHomePage"></a> </dd>
+    </dl>
 
-<!--ng-show="user.Locked"-->
+    <h3>Password Info</h3>
+    <dl class="dl-horizontal">
+        <dt>Actions</dt>
+        <dd>
+
+            <button ng-show="user.LockoutTime"  ng-click="unlock()">Unlock</button> <br ng-show="user.LockoutTime" />
+            <div change-password username="user.samAccountName"></div>
+        </dd>
+        <dt ng-show="user.LockoutTime">Lockout Time</dt>
+        <dd ng-show="user.LockoutTime" ><div class="error" date-time="user.LockoutTime"></div></dd>
+        <dt ng-show="user.UnlockTime">Unlock Time</dt>
+        <dd ng-show="user.UnlockTime"><div class="error" date-time="user.UnlockTime"></div></dd>
+        <dt>Password Last Set</dt>
+        <dd><div date-time="user.pwdLastSet"></div></dd>
+        <dt>Password Expired</dt>
+        <dd ng-bind="user.PasswordExpired"></dd>
+        <dt>Dont Expire Password</dt>
+        <dd ng-bind="user.DontExpirePassword"></dd>
+    </dl>
+
+    <h3>Login Info</h3>
+    <dl class="dl-horizontal">
+        <dt>Last Logon</dt>
+        <dd><div date-time="user.lastLogon"></div></dd>
+        <dt>Home Drive</dt>
+        <dd ng-bind="user.homeDrive"></dd>
+        <dt>Home Directory</dt>
+        <dd ng-bind="user.homeDirectory"></dd>
+        <dt>Script</dt>
+        <dd ng-bind="user.scriptPath"></dd>
+        <dt>Groups</dt>
+        <dd>
+            <ul class="ul-tight" ng-repeat="group in user.Groups">
+                <li><div ad-group="group"></div></li>
+            </ul>
+        </dd>
+    </dl>
+
+
+
+    <h3>Other</h3>
+    <dl class="dl-horizontal">
+        <dt>Created</dt>
+        <dd><div date-time="user.whenCreated"></div></dd>
+        <dt>distinguishedName</dt>
+        <dd ng-bind="user.distinguishedName"></dd>
+        <dt>cn</dt>
+        <dd ng-bind="user.cn"></dd>
+    </dl>
+</div>
+
+<!--<pre>   -->
+    <!--{{ user | json }}-->
+<!--</pre>-->
+

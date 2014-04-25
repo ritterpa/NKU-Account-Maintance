@@ -1,10 +1,10 @@
 app.factory('User', ['$resource', '$rootScope', '$location', function ($resource, $rootScope, $location) {
     var queryStringName = 'username';
 
-    var url = $rootScope.api + "user";
+    var url = $rootScope.api + "db/user";
     var User = $resource(
         url,
-        null,//{ScopeId: "@ScopeId"},
+        null,
         {
             'get': {
                 method: 'GET'
@@ -34,14 +34,14 @@ app.factory('User', ['$resource', '$rootScope', '$location', function ($resource
     if ($location.search().username != null) {
         User.get({ username: $location.search().username }).$promise.then(function (user) {
             User.SetCurrentUser(user);
-        })
-        console.log("set with url");
+        });
+//        console.log("set with url");
     }
     else {
         User.get().$promise.then(function (user) {
             User.SetCurrentUser(user);
-        })
-        console.log("set by current login");
+        });
+//        console.log("set by current login");
     }
 
     return User;

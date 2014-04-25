@@ -1,12 +1,19 @@
 app.controller('ADCtrl', ['$scope', '$rootScope', 'User', 'ADUser', function ($scope, $rootScope, User, ADUser) {
+    $scope.status = 'none';
     $scope.user = null;
 
     //setup funciton for getting ad info
     $scope.SetUser = function (username) {
+        $scope.user = null;
+        $scope.status = 'loading';
         ADUser.get({ username: username }).$promise.then(function (user) {
+            $scope.status = 'loaded';
             $scope.user = user;
-        })
-    }
+        }, function() {
+            $scope.status = 'none';
+        });
+    };
+
     //setup the first time
     if (User.CurrentUser != null) {
         $scope.SetUser(User.CurrentUser.Name);
@@ -18,10 +25,13 @@ app.controller('ADCtrl', ['$scope', '$rootScope', 'User', 'ADUser', function ($s
     });
 
 
-    $scope.Unlock = function () {
-        ADUser.unlock({ dn: $scope.user.DistinguishedName }).$promise.then(function () {
-            console.log('user unlocked');
+    $scope.unlock = function () {
+        ADUser.unlock({ username: $scope.user.samAccountName }).$promise.then(function () {
+            $scope.SetUser($scope.user.samAccountName);
+        }, function() {
+            console.log('user unlocked errored');
             $scope.SetUser($scope.user.samAccountName);
         });
     }
+
 }]);
