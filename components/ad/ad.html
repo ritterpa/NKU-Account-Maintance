@@ -40,7 +40,10 @@
         <dd>
 
             <button ng-show="user.LockoutTime"  ng-click="unlock()">Unlock</button> <br ng-show="user.LockoutTime" />
-            <div change-password username="user.samAccountName"></div>
+
+
+            <div change-password username="user.samAccountName"></div><br>
+            <button ng-click="clearPasswordLastSet()">Clear Last Set</button>
         </dd>
         <dt ng-show="user.LockoutTime">Lockout Time</dt>
         <dd ng-show="user.LockoutTime" ><div class="error" date-time="user.LockoutTime"></div></dd>
@@ -66,6 +69,7 @@
         <dd ng-bind="user.scriptPath"></dd>
         <dt>Groups</dt>
         <dd>
+            <button ng-click="getGroups()">Get Nested Groups</button>
             <ul class="ul-tight" ng-repeat="group in user.Groups">
                 <li><div ad-group="group"></div></li>
             </ul>

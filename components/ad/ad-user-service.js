@@ -11,10 +11,20 @@ app.factory('ADUser', function ($resource, $rootScope) {
                 method: 'GET',
                 url: url + '/unlock'
             },
+            'groups': {
+                isArray: true,
+                method: 'GET',
+                url: url + '/groups'
+            },
+            'clearPasswordLastSet': {
+                method: 'GET',
+                url: url + '/clearPasswordLastSet'
+            },
             'password': {
                 method: 'GET',
                 url: url + '/password'
             }
+
         }
     );
 });

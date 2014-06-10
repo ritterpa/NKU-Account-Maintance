@@ -39,22 +39,45 @@
         </li>
         <li ng-if="user.Photo" >
             <p class="navbar-text" >
-                <img style="max-height: 100px; max-width: 100px" ng-src="{{ user.Photo }}" />
+                <img class="photo-med" ng-src="{{ user.Photo }}" />
+            </p>
+        </li>
+
+        <li ng-if="!user.Photo" >
+            <p class="navbar-text" >
+                <img class="photo-med" src="images/no-photo.gif" />
             </p>
         </li>
         <li>
             <p class="navbar-text">
                 User:<br />
-                <input style="margin-top: -5px" type="text"
-                       ng-model="userText"
-                       typeahead="userText as u.Name for u in GetUsers($viewValue)"
+                <input ng-if=" !strictSearch"
+                       class="form-control"
+                       style="margin-top: -5px"
+                       type="text"
+                       ng-model="userText.Normal"
+                       typeahead="userText.Normal as u.Name for u in GetUsers($viewValue)"
                        typeahead-min-length="0"
                        typeahead-template-url="components/user-search/user-search-typeahead.html"
                        typeahead-editable="false"
                        typeahead-loading="loadingUsers"
                        typeahead-on-select="SelectUser($item, $model, $label)"
+                       typeahead-wait-ms="0"
+                       autofocus
+                       >
+                </input>
+                <input ng-if="strictSearch"
+                       class="form-control"
+                       style="margin-top: -5px"
+                       type="text"
+                       ng-model="userText.Strict"
+                       ng-change="SetUser()"
+                       ng-delay="500"
                        class="form-control">
                 </input>
+                <label>
+                    <input type="checkbox" ng-model="strictSearch" >Strict Search
+                </label>
                 <!--<span ng-show="loadingUsers"> Loading</span>-->
             </p>
         </li>

@@ -32,6 +32,24 @@ app.controller('ADCtrl', ['$scope', '$rootScope', 'User', 'ADUser', function ($s
             console.log('user unlocked errored');
             $scope.SetUser($scope.user.samAccountName);
         });
-    }
+    };
+
+    $scope.clearPasswordLastSet = function () {
+        ADUser.clearPasswordLastSet({ username: $scope.user.samAccountName }).$promise.then(function () {
+            $scope.SetUser($scope.user.samAccountName);
+        }, function() {
+            console.log('user clear pwdLastSet errored');
+            $scope.SetUser($scope.user.samAccountName);
+        });
+    };
+
+    $scope.getGroups = function () {
+        ADUser.groups({ username: $scope.user.samAccountName }).$promise.then(function (data) {
+            console.log('changing groups');
+            $scope.user.Groups = data;
+        }, function() {
+            console.log('user get groups errored');
+        });
+    };
 
 }]);

@@ -84,3 +84,12 @@ body {
 }
 
 .ul-tight { margin: 0; }
+
+.photo-small {
+    max-height: 50px;
+    max-width: 50px
+}
+.photo-med {
+    max-height: 100px;
+    max-width: 100px
+}

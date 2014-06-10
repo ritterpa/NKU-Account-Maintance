@@ -91,5 +91,61 @@ app.directive("dateTime", function ($compile, $modal) {
             '{{ datetime | amDateFormat:"M/DD/YYYY h:mm:ss a"  }} - {{ datetime | ago }}' +
             '</div>'
     };
-})
+});
 
+/**
+ * @ngDoc directive
+ * @name ngEnter
+ * @param {expression} ngEnter
+ */
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+/**
+ * @ngDoc directive
+ * @name ngDelay
+ * @param {expression} ngDelay
+ */
+app.directive('ngDelay', ['$timeout', function ($timeout) {
+    return {
+        restrict: 'A',
+        scope: true,
+        compile: function (element, attributes) {
+            var expression = attributes['ngChange'];
+            if (!expression)
+                return;
+
+            var ngModel = attributes['ngModel'];
+            if (ngModel) attributes['ngModel'] = '$parent.' + ngModel;
+            attributes['ngChange'] = '$$delay.execute()';
+
+            return {
+                post: function (scope, element, attributes) {
+                    scope.$$delay = {
+                        expression: expression,
+                        delay: scope.$eval(attributes['ngDelay']),
+                        execute: function () {
+                            var state = scope.$$delay;
+                            state.then = Date.now();
+                            $timeout(function () {
+                                if (Date.now() - state.then >= state.delay)
+                                    scope.$parent.$eval(expression);
+                            }, state.delay);
+                        }
+                    };
+                }
+            }
+        }
+    };
+}]);

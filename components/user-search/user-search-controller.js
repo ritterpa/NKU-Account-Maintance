@@ -2,11 +2,14 @@
 app.controller('UserSearchCtrl', ['$scope', '$rootScope', 'User', function ($scope, $rootScope, User) {
 
     $scope.user = null;
-    $scope.userText = null;
+    $scope.userText = {
+        Normal: '',
+        Strict: ''
+    };
 
     $rootScope.$on('CurrentUser', function (event, user) {
         $scope.user = user;
-        $scope.userText = user.Name;
+        $scope.userText.Normal = user.Name;
     });
 
     $scope.SelectUser = function (item, model, label) {
@@ -20,5 +23,15 @@ app.controller('UserSearchCtrl', ['$scope', '$rootScope', 'User', function ($sco
             return users;
         });
     }
+
+    $scope.SetUser = function()
+    {
+        return User.get({ username: $scope.userText.Strict }).$promise.then(function (data) {
+            console.log('set user ' + $scope.userText.Strict);
+            User.SetCurrentUser(data);
+        }, function () {
+            console.log('No user ' + $scope.userText.Strict + ' found.');
+        });
+    };
 
 }]);

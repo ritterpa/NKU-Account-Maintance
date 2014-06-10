@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="appserv3 - acccount">
+  <component name="PublishConfigData" autoUpload="Always" serverName="account.nku.edu">
     <serverData>
-      <paths name="appserv3 - acccount">
+      <paths name="account.nku.edu">
         <serverdata>
           <mappings>
-            <mapping deploy="\" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="Z:/README.md" />
-            <excludedPath local="true" path="Z:/packages.config" />
-            <excludedPath path="packages.config" />
-            <excludedPath path="README.md" />
-            <excludedPath path="bin" />
-            <excludedPath path="Global.asax" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
